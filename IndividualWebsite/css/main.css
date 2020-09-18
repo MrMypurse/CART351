@@ -94,7 +94,7 @@ h4{
   height: 400px;
   width: 600px;
   text-align: left;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 2.5;
 }
 
@@ -102,5 +102,5 @@ footer{
   position: relative;
   left: 7%;
   text-align: left;
-  font-size: 12px;
+  font-size: 14px;
 }
