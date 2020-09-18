@@ -1,10 +1,10 @@
-
 body{
   margin: 0;
   padding: 0;
   color: white;
+  position: relative;
   font-family: 'Roboto', sans-serif;
-  background-image: url('/bg.jpg');
+  background-image: url('/bg1.jpg');
   background-repeat: no-repeat;
   background-color: black;
   background-size: contain;
@@ -19,7 +19,7 @@ body{
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: black;
+  background-color: #333;
 }
 
 li {
@@ -46,27 +46,9 @@ h2{
   font-size: 140px;
 }
 
-h2:hover {
-  
-}
-
 h3{
   position: relative;
   left: 4%;
   text-align: left;
   font-size: 50px;
-}
-
-h4{
-  position: relative;
-  left: 180px;
-  height: 400px;
-  width: 600px;
-  text-align: left;
-  font-size: 20px;
-}
-
-footer {
-  font-size: 14px;
-
 }
