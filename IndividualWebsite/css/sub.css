@@ -11,6 +11,7 @@ body{
 }
 
 .navigation {
+  font-family: 'Roboto', sans-serif;
   position: sticky;
   list-style-type: none;
   z-index: 1;
