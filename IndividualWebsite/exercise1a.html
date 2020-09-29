@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>CART 351 HOME PAGE</title>
+  <link rel="stylesheet" type="text/css" href="css/sub.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
+
+
+  <!--the navigation bar on top -->
+  <div class="navigation">
+     <button class="dropbtn"><a href="index.html">HOME</a></button>
+    <div class="dropdown" style="float:right" >
+      <button class="dropbtn">EXERCISES</button>
+      <div class="dropdown-content">
+        <a href="exercise1a.html">0001A</a>
+        <a href="exercise1b.html">0001B</a>
+        <a href="exercise2.html">0002</a>
+        <a href="exercise3.html">0003</a>
+        <a href="exercise4.html">0004</a>
+        <a href="exercise5.html">0005</a>
+        <a href="exercise6.html">0006</a>
+        <a href="exercise7.html">0007</a>
+        <a href="exercise8.html">0008</a>
+      </div>
+    </div>
+    <div class="dropdown"style="float:right">
+      <button class="dropbtn">REFLECTIONS</button>
+      <div class="dropdown-content">
+        <a href="reflection1.html">0001</a>
+        <a href="reflection2.html">0002</a>
+        <a href="reflection3.html">0003</a>
+        <a href="reflection4.html">0004</a>
+      </div>
+    </div>
+
+    <div class="dropdown"style="float:right">
+      <button class="dropbtn">PRESENTATIONS</button>
+      <div class="dropdown-content">
+        <a href="presentation1.html">TECHNICAL</a>
+        <a href="presentation2.html">RESEARCH</a>
+      </div>
+    </div>
+
+    <div class="dropdown"style="float:right">
+      <button class="dropbtn">PROJECT</button>
+      <div class="dropdown-content">
+        <a href="prototype.html">PROTOTYPE</a>
+        <a href="final.html">FINAL</a>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+  <style>
+   #c {
+      background-color: #3e181b;
+      border: 3px solid #db1d2d;
+    }
+
+    #d {
+      background-color: #422018;
+      border: 3px solid #f0421c;
+    }
+
+    #e {
+      background-color: #45391b;
+      border: 3px solid #fec02d;
+    }
+
+    body {
+      background: black;
+    }
+
+    .para {
+      color: white;
+      font-size: 22pt;
+      background: purple;
+      margin-left: 1%;
+      margin-top: 1%;
+      padding: 1%;
+    }
+
+    .box {
+      width: 10vw;
+      /*(1/10th) viewport width */
+      height: 10vw;
+      margin-left: 1%;
+      margin-top: 1%;
+      display: inline-block;
+    }
+
+    .wrapper {
+      margin-left: 30%;
+      margin-top: 15%;
+    }
+  </style>
+
+  <script>
+    window.onload = function() {
+      //Add event listener to the boxes
+      let boxes = document.getElementsByClassName('box');
+      for(let i = 0; i < boxes.length; i++) {
+        boxes[i].addEventListener('click', handleClick);
+      }
+
+      //Add event listener to the paragraph
+      let para = document.getElementById('displayText');
+      para.addEventListener('click', handleClick);
+
+      //identity the which class/element is clicked on
+      function handleClick(event) {
+      let className = event.target.className;
+      let elementID = event.target.id;
+      console.log(elementID);
+      console.log(className);
+
+      //Make the text appear in paragraph when the box is clicked on and display the box's ID
+      if (className === 'box') {
+        let boxUpper = elementID.toUpperCase();
+        let boxText = document.createTextNode(' THIS TEXT IS FOR BOX ' + boxUpper);
+        para.style.display = 'inline-block';
+        para.style.width = '370px';
+        para.appendChild(boxText);
+    }
+
+    //Make the textdisappear when the paragraph is clicked on
+    if (elementID === 'displayText') {
+      para.innerHTML = '';
+      para.style.display = 'none';
+    }
+  }
+}
+  </script>
+
+<body>
+  <div class="wrapper">
+    <div id="c" class="box"></div>
+    <div id="d" class="box"></div>
+    <div id="e" class="box"></div>
+    <br>
+    <p style="display:none;" id="displayText" class="para"></p>
+  </div>
+
+
+  <!-- the footer div -->
+  <footer>
+    <p> Made by Janet Sun , Concordia University, Fall 2020. </p>
+  </footer>
+</body>
+
+</html>
