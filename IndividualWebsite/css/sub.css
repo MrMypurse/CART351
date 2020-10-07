@@ -99,6 +99,30 @@ h4{
   line-height: 2;
 }
 
+h5{
+  position: relative;
+  left: 7%;
+  height: 400px;
+  width: 1200px;
+  text-align: left;
+  font-size: 18px;
+  line-height: 2.5;
+}
+
+.img{
+  position: relative;
+  display: block;
+  left: 7%;
+}
+
+.bold{
+  font-size: 150%;
+}
+
+.bold:hover{
+  text-shadow: 0 0 7px #b8b8b8;
+}
+
 footer{
   position: relative;
   left: 7%;
