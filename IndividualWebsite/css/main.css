@@ -114,6 +114,14 @@ h5{
   left: 7%;
 }
 
+.bold{
+  font-size: 150%;
+}
+
+.bold:hover{
+  text-shadow: 0 0 7px #b8b8b8;
+}
+
 footer{
   position: relative;
   left: 7%;
