@@ -1,5 +1,4 @@
-
-body{
+body {
   margin: 0;
   padding: 0;
   color: white;
@@ -21,7 +20,6 @@ body{
   background-color: black;
 }
 
-
 .dropbtn {
   background-color: black;
   color: white;
@@ -41,7 +39,7 @@ body{
   background-color: #black;
   color: white;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -66,12 +64,12 @@ body{
   color: black;
 }
 
-a{
+a {
   color: white;
   text-decoration: none;
 }
 
-h2{
+h2 {
   position: relative;
   left: 4%;
   text-align: left;
@@ -82,14 +80,14 @@ h2:hover {
   text-shadow: 0 0 7px #b8b8b8;
 }
 
-h3{
+h3 {
   position: relative;
   left: 4%;
   text-align: left;
   font-size: 46px;
 }
 
-h4{
+h4 {
   position: relative;
   left: 7%;
   height: 400px;
@@ -99,7 +97,7 @@ h4{
   line-height: 2;
 }
 
-h5{
+h5 {
   position: relative;
   left: 7%;
   height: 400px;
@@ -109,21 +107,21 @@ h5{
   line-height: 2.5;
 }
 
-.img{
+.img {
   position: relative;
   display: block;
   left: 7%;
 }
 
-.bold{
+.bold {
   font-size: 150%;
 }
 
-.bold:hover{
+.bold:hover {
   text-shadow: 0 0 7px #b8b8b8;
 }
 
-footer{
+footer {
   position: relative;
   left: 7%;
   text-align: left;
