@@ -98,6 +98,22 @@ h4{
   line-height: 2.5;
 }
 
+h5{
+  position: relative;
+  left: 7%;
+  height: 400px;
+  width: 1200px;
+  text-align: left;
+  font-size: 18px;
+  line-height: 2.5;
+}
+
+.img{
+  position: relative;
+  display: block;
+  left: 7%;
+}
+
 footer{
   position: relative;
   left: 7%;
