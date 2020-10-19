@@ -5,12 +5,18 @@
     <link rel="stylesheet" type="text/css" href="css/sub.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
+
   </head>
-  <!--the navigation bar on top with drop down -->
+  <style>
+  header{
+    margin-top:20%;
+    margin-left: 30%;
+  }
+  </style>
+  <!--the navigation bar on top with drop down-->
   <div class="navigation">
      <button class="dropbtn"><a href="index.html">HOME</a></button>
-    <div class="dropdown" style="float:right" >
+    <div class="dropdown" style="float:right">
       <button class="dropbtn">EXERCISES</button>
       <div class="dropdown-content">
         <a href="exercise1a.html">0001A</a>
@@ -73,5 +79,11 @@
 
 </script>
 <body>
+  <header>
+  <label>Type in your search criteria::</label>
+  <input type="text" id="searchText" value="search Item" />
+  <input type="button" value="Search!" id="searchButton" />
+  </p>
+  </header>
 </body>
 </html>
