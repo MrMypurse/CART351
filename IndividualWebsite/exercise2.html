@@ -62,18 +62,19 @@
 <script>
     $(document).ready(function(){
     console.log("ready");
-    let pContainer = $('.wrapper')[0];
-    let h1 = $("<h1>");
-    h1.text("HOW WAS YOUR TEA TIME?");
-    $(h1).appendTo(pContainer);
-    displaySingle(teaTime);
+    //assign call back to click event ...
+    let firstTime = true;
 
+    $("#searchButton").click(getSearch);
+    /**** function callback from button ***/
+    function getSearch(){
+
+      let searchItem = $("#searchText").val();
+      console.log(searchItem);
+}
   });
 
-  function displaySingle(tea){
-    let keys = Object.keys(tea);
-    console.log(Object.keys(tea));
-  }
+
 
 
 
@@ -81,7 +82,7 @@
 <body>
   <header>
   <label>Type in your search criteria::</label>
-  <input type="text" id="searchText" value="search Item" />
+  <input type="text" id="searchText" value="searchItem" />
   <input type="button" value="Search!" id="searchButton" />
   </p>
   </header>
