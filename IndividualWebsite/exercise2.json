@@ -1,0 +1,28 @@
+let teaDay1 = {
+  Type:"Early Grey";
+  Quantity:"2";
+  Time:"Morning";
+  Mood:"Satisfied";
+  Duration:"30";
+}
+let teaDay2 = {
+  Type:"Black Tea";
+  Quantity:"2";
+  Time:"Noon";
+  Mood:"Satisfied";
+  Duration:"25";
+}
+let teaDay3 = {
+  Type:"Black Tea";
+  Quantity:"3";
+  Time:"Morning";
+  Mood:"Tired";
+  Duration:"50";
+}
+let teaDay4 = {
+  Type:"Green Tea";
+  Quantity:"2";
+  Time:"Morning";
+  Mood:"Tired";
+  Duration:"40";
+}
