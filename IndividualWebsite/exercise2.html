@@ -62,19 +62,36 @@
 <script>
     $(document).ready(function(){
     console.log("ready");
+    let days = [];
+    let searchItem;
     //assign call back to click event ...
     let firstTime = true;
-
+    let pContainer = $(".wrapper")[0];
     $("#searchButton").click(getSearch);
     /**** function callback from button ***/
     function getSearch(){
-
-      let searchItem = $("#searchText").val();
+      searchItem = $("#searchText").val();
       console.log(searchItem);
-}
-  });
+}     $.getJSON('/teaTime.json', function(data){
+      days = data;
+      console.log(days);
+      console.log("hello");
 
+    for(let outer_index = 0; outer_index<days.length; outer_index++){
+      let daysSingle = days[outer_index];
+      console.log(daysSingle);
+      let daysSingleDay = days[outer_index].Day;
+      console.log(daysSingleDay);
+      if(daysSingleDay === searchItem){
+        displaySingle(daySingle);
+      }
+    }
+})
+})
 
+  function displaySingle(){
+
+  }
 
 
 
@@ -82,7 +99,7 @@
 <body>
   <header>
     <p> MY TEA HABITS?</p>
-    <p> SEARCH "DAY", "TYPE", "QUANTITY", "TIME", "MOOD" OR "DURATION" TO FIND OUT </p>
+    <p> SEARCH "MONDAY", "TUESDAY", "WEDNESDAY", OR "THURSDAY" TO FIND OUT </p>
     <br>
   <label>TYPE IN SEARCH CRITERIA::</label>
   <input type="text" id="searchText" value="SEARCHITEM" />

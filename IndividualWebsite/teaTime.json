@@ -1,35 +1,36 @@
-{"teaTime":
-[
-    "Day": "1";
-    "Type": "Early Grey";
-    "Quantity": "2";
-    "Time": "Morning";
-    "Mood": "Satisfied";
-    "Duration": "30";
+
+[{
+    "Day": "Monday",
+    "Type": "Early Grey",
+    "Quantity": "2",
+    "Time": "Morning",
+    "Mood": "Satisfied",
+    "Duration": "30"
+  },
+  {
+  "Day":"Tuesday",
+    "Type": "Black Tea",
+    "Quantity": "2",
+    "Time": "Noon",
+    "Mood": "Satisfied",
+    "Duration": "25"
   },
 
-  "Day":"2";
-    "Type": "Black Tea";
-    "Quantity": "2";
-    "Time": "Noon";
-    "Mood": "Satisfied";
-    "Duration": "25";
+  {
+  "Day": "Wednesday",
+    "Type": "Black Tea",
+    "Quantity": "3",
+    "Time": "Morning",
+    "Mood": "Tired",
+    "Duration": "50"
   },
 
-  "Day": "3";
-    "Type": "Black Tea";
-    "Quantity": "3";
-    "Time": "Morning";
-    "Mood": "Tired";
-    "Duration": "50";
-  },
-
-  "Day":"4";
-    "Type": "Green Tea";
-    "Quantity": "2";
-    "Time": "Morning";
-    "Mood": "Tired";
-    "Duration": "40";
-  },
+  {
+  "Day":"Thursday",
+    "Type": "Green Tea",
+    "Quantity": "2",
+    "Time": "Morning",
+    "Mood": "Tired",
+    "Duration": "40"
+  }
 ]
-}
