@@ -64,34 +64,59 @@
     console.log("ready");
     let days = [];
     let searchItem;
+    let daysSingleDay;
+    let daysSingle;
+    let selectType;
+    let selectQuantity;
+    let selectTime;
+    let selectMood;
+    let selectDuration;
     //assign call back to click event ...
     let firstTime = true;
     let pContainer = $(".wrapper")[0];
     $("#searchButton").click(getSearch);
+    $("#searchButton").click(getTea);
     /**** function callback from button ***/
+
     function getSearch(){
       searchItem = $("#searchText").val();
       console.log(searchItem);
-}     $.getJSON('/teaTime.json', function(data){
-      days = data;
-      console.log(days);
-      console.log("hello");
-
-    for(let outer_index = 0; outer_index<days.length; outer_index++){
-      let daysSingle = days[outer_index];
-      console.log(daysSingle);
-      let daysSingleDay = days[outer_index].Day;
-      console.log(daysSingleDay);
-      if(daysSingleDay === searchItem){
-        displaySingle(daySingle);
-      }
     }
+
+function getTea(){
+  $.getJSON('/teaTime.json', function(data){
+   days = data;
+   console.log(days);
+
+ for(let outer_index = 0; outer_index<days.length; outer_index++){
+   daysSingle = days[outer_index];
+   console.log(daysSingle);
+   daysSingleDay = days[outer_index].Day;
+   console.log(daysSingleDay);
+
+   if(searchItem === daysSingleDay){
+     console.log("yay");
+     displaySingle(daysSingle);
+ }
+}
 })
-})
+}
 
   function displaySingle(){
+    selectType = (days[searchItem-1].Type).toString();
+    $("#displayType").text(selectType);
+    selectQuantity = (days[searchItem-1].Quantity).toString();
+    $("#displayQuantity").text(selectQuantity);
+    selectTime = (days[searchItem-1].Time).toString();
+    $("#displayTime").text(selectTime);
+    selectMood = (days[searchItem-1].Mood).toString();
+    $("#displayMood").text(selectMood);
+    selectDuration = (days[searchItem-1].Duration).toString();
+    $("#displayDuration").text(selectDuration);
+}
 
-  }
+})
+
 
 
 
@@ -99,12 +124,19 @@
 <body>
   <header>
     <p> MY TEA HABITS?</p>
-    <p> SEARCH "MONDAY", "TUESDAY", "WEDNESDAY", OR "THURSDAY" TO FIND OUT </p>
+    <p> SEARCH "1", "2", "3", OR "4" TO FIND OUT </p>
     <br>
   <label>TYPE IN SEARCH CRITERIA::</label>
   <input type="text" id="searchText" value="SEARCHITEM" />
   <input type="button" value="SEARCH!" id="searchButton" />
   </p>
+  <div class= "displayDay">  </div>
+    <div id = "displayType"><p>Type</p>  </div>
+    <div id = "displayQuantity"><p>Quantity</p> </div>
+    <div id = "displayTime"> <p>Time </p> </div>
+    <div id = "displayMood"> <p>Mood </p> </div>
+    <div id = "displayDuration"> <p>Duration</p> </div>
+  </div>
   </header>
 </body>
 </html>
