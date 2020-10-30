@@ -1,7 +1,7 @@
 <?DOCTYPE html>
 <html>
   <head>
-    <title>CART 351 EXERCISE 2</title>
+    <title>CART 351 EXERCISE 3</title>
     <link rel="stylesheet" type="text/css" href="css/sub.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -9,9 +9,28 @@
   </head>
   <style>
   header{
-    margin-top:20%;
-    margin-left: 30%;
+    text-align: center;
+    margin-top:7%;
   }
+ label{
+   font-size: 36px;
+ }
+.searchBox{
+  text-align: center;
+}
+
+.displayDay{
+  text-align: center;
+}
+
+.displayNew{
+ text-align: center;
+}
+
+.btn{
+  display: flex;
+  vertical-align: middle;
+}
   </style>
   <!--the navigation bar on top with drop down-->
   <div class="navigation">
@@ -23,7 +42,7 @@
         <a href="exercise1b.html">0001B</a>
         <a href="exercise2.html">0002</a>
         <a href="exercise3.php">0003</a>
-        <a href="exercise4.php">0004</a>
+        <a href="exercise4.html">0004</a>
         <a href="exercise5.html">0005</a>
         <a href="exercise6.html">0006</a>
         <a href="exercise7.html">0007</a>
@@ -71,11 +90,18 @@
     let selectTime;
     let selectMood;
     let selectDuration;
+    let typeValue;
+    let quantityValue;
+    let timeValue;
+    let moodValue;
+    let durationValue;
+
     //assign call back to click event ...
     let firstTime = true;
     let pContainer = $(".wrapper")[0];
     $("#searchButton").click(getSearch);
     $("#searchButton").click(getTea);
+    $("#enterButton").click(getValues);
     /**** function callback from button ***/
 
     function getSearch(){
@@ -83,6 +109,14 @@
       console.log(searchItem);
     }
 
+    function getValues(){
+      typeValue = $("#makeType").val();
+      quantityValue = $("#makeQuantity").val();
+      timeValue = $("#makeTime").val();
+      moodValue = $("#makeMood").val();
+      durationValue = $("#makeDuration").val();
+      console.log(typeValue);
+    }
 function getTea(){
   $.getJSON('teaTime.json', function(data){
    days = data;
@@ -122,14 +156,16 @@ function getTea(){
 
 </script>
 <body>
+  <div class=searchBox>
   <header>
-    <p> MY TEA HABITS?</p>
-    <p> SEARCH "1", "2", "3", OR "4" TO FIND OUT </p>
+    <label> MY TEA HABITS?</label>
+  </header>
+    <p> SEARCH 1 - 4 TO FIND OUT </p>
     <br>
-  <label>TYPE IN SEARCH CRITERIA:</label>
   <input type="text" id="searchText" value="SEARCHITEM" />
   <input type="button" value="SEARCH!" id="searchButton" />
   </p>
+  </div>
   <div class= "displayDay">
     <div id = "displayType"><p>Type</p>  </div>
     <div id = "displayQuantity"><p>Quantity</p> </div>
@@ -137,6 +173,18 @@ function getTea(){
     <div id = "displayMood"> <p>Mood </p> </div>
     <div id = "displayDuration"> <p>Duration</p> </div>
   </div>
-  </header>
+  <br>
+  <div class= "displayNew">
+    <label>DOCUMENT YOUR TEA:</label><br>
+    <form method="get" action="inputToGet.php">
+    <input type="text" name="nameType" id="makeType" value="ENTER TYPE" />
+    <input type="text" name="nameQuantity" id="makeQuantity" value="ENTER QUANTITY" />
+    <input type="text" name="nameTime" id="makeTime" value="ENTER TIME" />
+    <input type="text" name="nameMood" id="makeMood" value="ENTER MOOD" />
+    <input type="text" name="nameDuration" id="makeDuration" value="ENTER DURATION" />
+    <input type="button" value="ENTER!" id="enterButton" />
+  </form>
+</div>
+
 </body>
 </html>
