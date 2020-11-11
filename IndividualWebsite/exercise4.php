@@ -34,8 +34,20 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
   </head>
   <style>
   header{
+    text-align: center;
     margin-top:20%;
     margin-left: 30%;
+  }
+
+  .formContainer{
+    position: relative;
+    text-align: center;
+  }
+
+  label{
+    font-size: 60px;
+    text-align: center;
+
   }
   </style>
   <!--the navigation bar on top with drop down-->
@@ -86,19 +98,29 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 
 <body>
-  <div id="result">
-  </div>
+  <br>
   <div class="formContainer">
-    <form action="exercise4.php" method="post" enctype="multipart/form-data">
-    <h3> SUBMIT YOUR TATTOO INQUIRY: </h3>
+    <form id ="insertGallery">
+        <label> SUBMIT YOUR TATTOO INQUIRY </label>
     <fieldset>
       <p>SUBJECT <input type="text" maxlength="40" name="a_subject" required></p>
+      <p>SIZE <select name="size" id="size">
+        <option value="3in">3 inch</option>
+        <option value="5in">5 inch</option>
+        <option value="7in">7 inch</option>
+      </select> </p>
+      <p>COLOR <select name="color" id="color">
+        <option value="color">colors</option>
+        <option value="black">black and grey</option>
+      </select></p>
       <p>AREA <input type="text" maxlength="40" name="a_area" required></p>
       <p>DESCRIPTION <textarea type="text" rows="4" cols="50" name="a_description" required></textarea></p>
       <p>UPLOAD IMAGE <input type="file" name="filename" size=10 required/></p>
       <p class="sub"><input type="submit" name="submit" value="SUBMIT MY INFO" id=buttonS/></p>
     </fieldset>
   </form>
+</div>
+<div class="result">
 </div>
 </body>
 
@@ -134,26 +156,26 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       });
 
       function displayResponse(theResult){
-        let container = $('div').addClass("outer");
+        let container = $('<div>').addClass("outer");
         let title = $('<h3>');
         $(title).text("SUBMISSION FROM USER");
         $(title).appendTo(container);
-        let contentContainer = $('div').addClass("content");
-        for (let property in theReuslt){
+        let contentContainer = $('<div>').addClass("content");
+        for (let property in theResult){
           console.log(property);
           if (property === "fileName"){
             let img = $("<img>");
             $(img).attr('src','images/'+ theResult[property]);
             $(img).appendTo(contentContainer);
-          }
+         }
           else{
             let para = $('<p>');
-            $(para).text(property+"::" +theResult[property]);
-            $(para).appendTo(contentContainer);
-          }
+            $(para).text(property+"::" + theResult[property]);
+           $(para).appendTo(contentContainer);
+         }
         }
         $(contentContainer).appendTo(container);
-        $(container).appendTo("#result");
+        $(container).appendTo(".result");
       }
 
 })
