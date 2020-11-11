@@ -7,20 +7,63 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 </head>
 <style>
+.composts{
+  width: 150px;
+  height:150px;
+}
+#wasteBin, #compostBin{
+  width: 200px;
+  height: 200px;
+}
+
+.bins{
+}
 </style>
 <script>
 $(document).ready(function(){
 console.log("ready");
+  let $composts;
+  let $wastes;
+  let $compostBin;
+  let $wasteBin;
+  let score = 0;
+  console.log(score);
 
+  function setup() {
+  //assign all variables to objects
+  $composts = $('.composts');
+  $wastes = $('.wastes');
+  $wasteBin = $('#wasteBin');
+  $compostBin = $('#compostBin');
+  $composts.draggable();
+  $wastes.draggable();
+  //call the onDrop() while potion being draggable
+  $wasteBin.droppable({
+    drop: onDrop
+  });
+  $compostBin.droppable({
+    drop: onDrop
+  });
+}
+
+function onDrop(event, ui) {
+  //check if the potion is dropping
+  console.log('DROPPED');
+  //stop the potion from being draggable since the player can only pick 1 potion
+  $potion.draggable('disable');
+  ui.draggable.remove();
+}
 })
 </script>
-<body>
 
+<body>
   <!--the navigation bar on top with drop down -->
   <div class="navigation">
-    <button class="dropbtn"><a href="proposal.html">Home</a></button>
+    <button class="dropbtn"><a href="prototype.html">Home</a></button>
     <div class="dropdown" style="float:right">
       <button class="dropbtn">Date Visualization</button>
       <div class="dropdown-content">
@@ -48,11 +91,13 @@ console.log("ready");
   <!-- the header div -->
   <header>
   </header>
-  <div >
-    <div><img class='waste' src="images/Lemon.png"></div>
-    <div><img class='waste' src="images/LeafBag.png"></div>
-    <div><img class='bin' src="images/CompostBin.png"></div>
-    <div><img class='bin' src="images/WasteBin.png"></div>    
+  <div id="binBox">
+    <img id='compostBin' src="images/CompostBin.png">
+    <img id='wasteBin' src="images/WasteBin.png">
+  </div>
+  <div id='wasteBox'>
+    <img class='composts' src="images/Lemon.png">
+    <img class='composts' src="images/LeafBag.png">
   </div>
 </body>
 
