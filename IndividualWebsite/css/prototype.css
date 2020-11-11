@@ -7,6 +7,7 @@ body{
 
 .navigation {
   font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
   position: sticky;
   list-style-type: none;
   z-index: 1;
@@ -21,7 +22,8 @@ body{
   background-color: #92CC5F;
   color: white;
   padding: 16px;
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: bold;
   border: none;
 }
 
@@ -31,6 +33,7 @@ body{
 }
 
 .dropdown-content {
+    font-size: 14px;
   display: none;
   position: absolute;
   background-color: #92CC5F;
@@ -42,7 +45,7 @@ body{
 
 .dropdown-content a {
   color: white;
-  padding: 12px 16px;
+  padding: 12px 14px;
   text-decoration: none;
   display: block;
 }
@@ -59,4 +62,41 @@ body{
 .dropdown:hover .dropbtn {
   background-color: #92CC5F;
   color: #577335;
+}
+
+#headerImage {
+  display: grid;
+  width: 100%;
+  height: 600px;
+  margin: auto;
+  background-size: 100%;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  align-items: center;
+}
+
+#geoLogo, #statLogo, #gameLogo{
+  box-shadow: 5px 5px 5px #ccc;
+  width: 300px;
+  height: 300px;
+}
+#geoLogo:hover{
+  content: url("../images/logo_geospacial_hover.png");
+  width: 300px;
+  height: 300px;
+}
+
+#statLogo:hover{
+  content: url("../images/logo_statistical_hover.png");
+  width: 300px;
+  height: 300px;
+}
+
+#gameLogo:hover{
+  content: url("../images/logo_game_hover.png");
+  width: 300px;
+  height: 300px;
 }
