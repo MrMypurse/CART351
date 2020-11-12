@@ -6,12 +6,28 @@
   <link rel="stylesheet" type="text/css" href="css/prototype.css">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 </head>
 <style>
+#wasteBox{
+  position: relative;
+  top: 100px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+}
+#binBox{
+  position: relative;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+}
 .composts{
+  width: 150px;
+  height:150px;
+}
+.wastes{
   width: 150px;
   height:150px;
 }
@@ -20,11 +36,10 @@
   height: 200px;
 }
 
-.bins{
-}
 </style>
+
 <script>
-$(document).ready(function(){
+$(document).ready(setup);
 console.log("ready");
   let $composts;
   let $wastes;
@@ -54,10 +69,11 @@ function onDrop(event, ui) {
   //check if the potion is dropping
   console.log('DROPPED');
   //stop the potion from being draggable since the player can only pick 1 potion
-  $potion.draggable('disable');
+//  $wastes.draggable('disable');
+//  $composts.draggable('disable');
   ui.draggable.remove();
 }
-})
+
 </script>
 
 <body>
@@ -91,14 +107,15 @@ function onDrop(event, ui) {
   <!-- the header div -->
   <header>
   </header>
-  <div id="binBox">
-    <img id='compostBin' src="images/CompostBin.png">
-    <img id='wasteBin' src="images/WasteBin.png">
-  </div>
   <div id='wasteBox'>
     <img class='composts' src="images/Lemon.png">
     <img class='composts' src="images/LeafBag.png">
   </div>
+  <div id="binBox">
+    <img id='compostBin' src="images/CompostBin.png">
+    <img id='wasteBin' src="images/WasteBin.png">
+  </div>
+
 </body>
 
 </html>
