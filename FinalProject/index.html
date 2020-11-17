@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>CART 351 PROTOTYPE PAGE</title>
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<style>
+#headerImage {
+  display: grid;
+  width: 100%;
+  height: 600px;
+  margin: auto;
+  background-size: 100%;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  height: 500px;
+  align-items: center;
+}
+
+#geoLogo, #statLogo, #gameLogo{
+  box-shadow: 5px 5px 5px #ccc;
+  width: 300px;
+  height: 300px;
+}
+#geoLogo:hover{
+  content: url("../images/logo_geospacial_hover.png");
+  width: 300px;
+  height: 300px;
+}
+
+#statLogo:hover{
+  content: url("../images/logo_statistical_hover.png");
+  width: 300px;
+  height: 300px;
+}
+
+#gameLogo:hover{
+  content: url("../images/logo_game_hover.png");
+  width: 300px;
+  height: 300px;
+}
+
+</style>
+
+<body>
+
+  <!--the navigation bar on top with drop down -->
+  <div class="navigation">
+    <button class="dropbtn"><a href="index.html">HOME</a></button>
+    <div class="dropdown" style="float:right">
+      <button class="dropbtn">Data Visualization</button>
+      <div class="dropdown-content">
+        <a href="geospacial.html">Geospacial</a>
+        <a href="statistical.html">Statistical</a>
+      </div>
+    </div>
+    <div class="dropdown" style="float:right">
+      <button class="dropbtn">How to Compost</button>
+      <div class="dropdown-content">
+        <a href="howto.html">Compost Tips</a>
+        <a href="game.html">Mini Game</a>
+      </div>
+    </div>
+    <div class="dropdown" style="float:right">
+      <button class="dropbtn">About</button>
+      <div class="dropdown-content">
+        <a href="aboutproject.html">This Project</a>
+        <a href="aboutcreator.html">The Creator</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- the header div -->
+  <header>
+    <img id="headerImage" src="images/prototype_BG.png">
+  </header>
+  <div class="column">
+    <a href="geospacial.html"><img id="geoLogo" src="images/logo_geospacial.png">
+    </a>
+  </div>
+  <div class="column">
+    <a href="statistical.html"><img id="statLogo" src="images/logo_statistical.png">
+    </a>
+  </div>
+  <div class="column">
+    <a href="game.html"><img id="gameLogo" src="images/logo_game.png" >
+    </a>
+  </div>
+
+<footer>
+  <div>
+  <p>Created by Janet Sun. Concordia University. Fall 2020. </p>
+</div>
+</footer>
+</body>
+
+</html>

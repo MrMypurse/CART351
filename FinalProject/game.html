@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>CART 351 FINAL PROJECT GAME PAGE</title>
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+</head>
+<style>
+#scoreBox{
+  left: 200px;
+  position: absolute;
+  color: #684b3c;
+  font-size: 20px;
+}
+
+#wasteBox{
+  position: relative;
+  top: 100px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+}
+#binBox{
+  position: relative;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+}
+.composts{
+  width: 150px;
+  height:150px;
+}
+.wastes{
+  width: 150px;
+  height:150px;
+}
+#wasteBin, #compostBin{
+  width: 200px;
+  height: 200px;
+}
+
+</style>
+
+<script>
+$(document).ready(setup);
+console.log("ready");
+  let $composts;
+  let $wastes;
+  let $compostBin;
+  let $wasteBin;
+  let score = 0;
+  console.log(score);
+
+  function setup() {
+  //assign all variables to objects
+  $composts = $('.composts');
+  $wastes = $('.wastes');
+  $wasteBin = $('#wasteBin');
+  $compostBin = $('#compostBin');
+  $composts.draggable();
+  $wastes.draggable();
+  //call the onDrop() while potion being draggable
+  $wasteBin.droppable({
+    drop: onDrop
+  });
+  $compostBin.droppable({
+    drop: onDrop
+  });
+  //Check for collision when the mouse is dragging
+  //$composts.on("mouseup", function() {
+  //compostCollision();
+//});
+}
+
+function onDrop(event, ui) {
+  //check if the potion is dropping
+  console.log('DROPPED');
+//  $wastes.draggable('disable');
+//  $composts.draggable('disable');
+  compostCollision();
+  ui.draggable.remove();
+}
+//getPositions()
+//
+//Store the objects'positions in arrays
+function getPositions(object) {
+  let objectPosition = object.position();
+  let objectWidth = object.width();
+  let objectHeight = object.height();
+  return [
+    [objectPosition.left, objectPosition.left + objectWidth],
+    [objectPosition.top, objectPosition.top + objectHeight]
+  ];
+}
+
+//comparePositions()
+//
+//Compare the positions of two objects and return true or false
+function comparePositions(p1, p2) {
+  let x1 = p1[0] < p2[0] ? p1 : p2;
+  let x2 = p1[0] < p2[0] ? p2 : p1;
+  return x1[1] > x2[0] || x1[0] === x2[0] ? true : false;
+}
+
+//checkCollision()
+//
+//Verify if two objects are colliding
+function checkCollision(a, b) {
+  let position1 = getPositions(a);
+  let position2 = getPositions(b);
+  let horizontalMatch = comparePositions(position1[0], position2[0]);
+  let verticalMatch = comparePositions(position1[1], position2[1]);
+  let match = horizontalMatch && verticalMatch;
+  return match;
+}
+
+
+function compostCollision() {
+  let collision = checkCollision($composts, $compostBin);
+  //if the two objects collide, add 1 to score
+  if (collision === true) {
+    score = score + 1;
+  }
+  console.log(score);
+  updateScore();
+}
+
+function updateScore(){
+  $("scoreBox").append("<p>Score</p>");
+}
+
+</script>
+
+<body>
+  <!--the navigation bar on top with drop down -->
+  <div class="navigation">
+    <button class="dropbtn"><a href="index.html">Home</a></button>
+    <div class="dropdown" style="float:right">
+      <button class="dropbtn">Date Visualization</button>
+      <div class="dropdown-content">
+        <a href="geospacial.html">Geospacial</a>
+        <a href="statistical.html">Statistical</a>
+      </div>
+    </div>
+    <div class="dropdown" style="float:right">
+      <button class="dropbtn">How to Compost</button>
+      <div class="dropdown-content">
+        <a href="howto.html">Compost Tips</a>
+        <a href="game.html">Mini Game</a>
+      </div>
+    </div>
+    <div class="dropdown" style="float:right">
+      <button class="dropbtn">About</button>
+      <div class="dropdown-content">
+        <a href="aboutproject.html">This Project</a>
+        <a href="aboutcreator.html">The Creator</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- the header div -->
+  <header>
+  </header>
+  <div id='scoreBox'>
+  </div>
+
+  <div id='wasteBox'>
+    <img class='composts' src="images/Bread.png">
+    <img class='composts' src="images/Carrot.png">
+    <img class='wastes' src="images/Chicken.png">
+    <img class='composts' src="images/LeafBag.png">
+    <img class='composts' src="images/Lemon.png">
+    <img class='wastes' src="images/Meat.png">
+    <img class='composts' src="images/Newspaper.png">
+    <img class='composts' src="images/Tomato.png">
+  </div>
+
+  <div id="binBox">
+    <img id='compostBin' src="images/CompostBin.png">
+    <img id='wasteBin' src="images/WasteBin.png">
+  </div>
+
+  <footer>
+    <div>
+    <p>Created by Janet Sun. Concordia University. Fall 2020. </p>
+  </div>
+  </footer>
+</body>
+
+</html>
