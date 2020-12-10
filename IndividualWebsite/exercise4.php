@@ -62,9 +62,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         <a href="exercise3.php">0003</a>
         <a href="exercise4.php">0004</a>
         <a href="exercise5.html">0005</a>
-        <a href="exercise6.html">0006</a>
-        <a href="exercise7.html">0007</a>
-        <a href="exercise8.html">0008</a>
+
       </div>
     </div>
     <div class="dropdown"style="float:right">
@@ -177,6 +175,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $(contentContainer).appendTo(container);
         $(container).appendTo(".result");
       }
+
 
 })
 

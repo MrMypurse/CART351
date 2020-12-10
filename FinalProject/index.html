@@ -7,18 +7,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 </head>
+
 <style>
 #headerImage {
   display: grid;
+  position: relative;
   width: 100%;
-  height: 700px;
-  margin: auto;
-  background-size: 100%;
+  height: 900px;
 }
 
 .column {
+  position: relative;
   float: left;
+  left: 5%;
   width: 33.33%;
   height: 500px;
   align-items: center;
@@ -47,7 +51,28 @@
   height: 300px;
 }
 
+#popupForm{
+  color: black;
+  background-color: #D0F0C0;
+  text-align: center;
+  display: none;
+}
+
+#enterButton{
+  color: white;
+  background-color: #2C5F2D;
+  width: 70px;
+  height: 30px;
+}
+
+#enterButton:hover{
+  background-color: white;
+  color: black;
+}
+
 </style>
+
+
 
 <body>
 
@@ -57,8 +82,8 @@
     <div class="dropdown" style="float:right">
       <button class="dropbtn">Data Visualization</button>
       <div class="dropdown-content">
-        <a href="geospacial.html">Geospacial</a>
-        <a href="statistical.html">Statistical</a>
+        <a href="study.html">In Canada</a>
+        <a href="local.html">Local Data</a>
       </div>
     </div>
     <div class="dropdown" style="float:right">
@@ -77,29 +102,90 @@
     </div>
   </div>
 
+  <!-- the pop up div -->
+  <div id="popupBox">
+    <!-- new:: the form for adding new... -->
+    <form id="popupForm" action = "">
+    <fieldset>
+      <label> Welcome. Please answer the questions below to start: </label>
+      <p>Which province/territory are you currently resident in Canada?</p>
+      <p><input type="text" name="a_location" value="Type here" required></p>
+      <p>Does your household compost organic wastes regularly?</p>
+      <p><input type="text" name="a_choice" value="Type here" required></p>
+      <p><input type="submit" name="enter" value="Enter" id="enterButton"></p>
+    </fieldset>
+    </form>
+  </div>
+
 
   <!-- the header div -->
-  <header>
-    <img id="headerImage" src="images/prototype_BG.png">
+  <header id="headerImage">
+    <img id="soil" src="images/Home_soil.svg">
   </header>
+  <div>
   <div class="column">
-    <a href="geospacial.html"><img id="geoLogo" src="images/logo_geospacial.png">
+    <a href="study.html"><img id="geoLogo" src="images/logo_geospacial.png">
     </a>
   </div>
   <div class="column">
-    <a href="statistical.html"><img id="statLogo" src="images/logo_statistical.png">
+    <a href="local.html"><img id="statLogo" src="images/logo_statistical.png">
     </a>
   </div>
   <div class="column">
-    <a href="game.html"><img id="gameLogo" src="images/logo_game.png" >
+    <a href="howto.html"><img id="gameLogo" src="images/logo_game.png" >
     </a>
   </div>
-
+</div>
+<!-- the footer div -->
 <footer>
   <div>
   <p>Created by Janet Sun. Concordia University. Fall 2020. </p>
 </div>
 </footer>
 </body>
+
+
+<script>
+$(document).ready(function(){
+  setTimeout(popUp, 500);
+  console.log("in script");
+
+  $("#popupForm").submit(function(event){
+    event.preventDefault();
+    console.log("CLICKED");
+    let form= $('#popupForm')[0];
+    let data = new FormData(form);
+
+    $.ajax({
+      type: "POST",
+      enctype: 'multipart/form-data',
+      url: "popup.php",
+      data: data,
+      processData: false,
+      contentType: false,
+      cache: false,
+      tieout: 600000,
+      success: function(response){
+        console.log("SUCCESS!");
+        console.log(response);
+        let parsedJSON = JSON.parse(response);
+        console.log(parsedJSON);
+      },
+      error:function(){
+        conosole.log("ERROR!");
+      }
+    });
+  });
+
+
+function popUp(){
+  console.log("formLoaded");
+  $( "#popupForm" ).dialog({
+    modal: true
+});
+}
+});
+
+</script>
 
 </html>

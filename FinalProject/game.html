@@ -10,6 +10,9 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 </head>
 <style>
+body{
+  background-image: url('images/gameBG.JPG')
+}
 #scoreBox{
   left: 200px;
   position: absolute;
@@ -49,6 +52,7 @@
 $(document).ready(setup);
 console.log("ready");
   let $composts;
+  let $bread;
   let $wastes;
   let $compostBin;
   let $wasteBin;
@@ -58,6 +62,7 @@ console.log("ready");
   function setup() {
   //assign all variables to objects
   $composts = $('.composts');
+  $bread = $('#bread');
   $wastes = $('.wastes');
   $wasteBin = $('#wasteBin');
   $compostBin = $('#compostBin');
@@ -79,9 +84,33 @@ console.log("ready");
 function onDrop(event, ui) {
   //check if the potion is dropping
   console.log('DROPPED');
+  console.log(this);
+  console.log(ui.draggable[0]);
+  if(this.id ==="wasteBin"){
+    if($(ui.draggable[0]).hasClass("wastes")){
+      console.log("correct");
+      score = score + 1;
+      updateScore();
+    }
+    else{
+      console.log("incorrect");
+      $('#scoreBox').html("<p>Food scraps from the kitchen are a perfect start to your compost pile. Make sure to break them down into smaller pieces. </p>");
+    }
+  }
+  if(this.id ==="compostBin"){
+    if($(ui.draggable[0]).hasClass("composts")){
+      console.log("correct");
+      score = score + 1;
+      updateScore();
+    }
+    else{
+      console.log("incorrect");
+      $('#scoreBox').html("<p>Meat, bones and most animal products are not ideal for your compost pile. Not only can composting meat encourage pests, but it can also harbor pathogens.</p>");
+    }
+  }
 //  $wastes.draggable('disable');
 //  $composts.draggable('disable');
-  compostCollision();
+//  compostCollision();
   ui.draggable.remove();
 }
 //getPositions()
@@ -120,18 +149,19 @@ function checkCollision(a, b) {
 
 
 function compostCollision() {
-  let collision = checkCollision($composts, $compostBin);
+  let collision = checkCollision($bread, $compostBin);
   //if the two objects collide, add 1 to score
   if (collision === true) {
     score = score + 1;
-  }
-  console.log(score);
+  };
   updateScore();
 }
 
 function updateScore(){
-  $("scoreBox").append("<p>Score</p>");
+  console.log(score);
+  $('#scoreBox').html("<p>Score:</p>" + score);
 }
+
 
 </script>
 
@@ -142,8 +172,8 @@ function updateScore(){
     <div class="dropdown" style="float:right">
       <button class="dropbtn">Date Visualization</button>
       <div class="dropdown-content">
-        <a href="geospacial.html">Geospacial</a>
-        <a href="statistical.html">Statistical</a>
+        <a href="study.html">In Canada</a>
+        <a href="local.html">Local Data</a>
       </div>
     </div>
     <div class="dropdown" style="float:right">
@@ -170,14 +200,14 @@ function updateScore(){
   </div>
 
   <div id='wasteBox'>
-    <img class='composts' src="images/Bread.png">
-    <img class='composts' src="images/Carrot.png">
-    <img class='wastes' src="images/Chicken.png">
-    <img class='composts' src="images/LeafBag.png">
-    <img class='composts' src="images/Lemon.png">
-    <img class='wastes' src="images/Meat.png">
-    <img class='composts' src="images/Newspaper.png">
-    <img class='composts' src="images/Tomato.png">
+    <img class='composts' id='bread'src="images/Bread.png">
+    <img class='composts' id='carrot' src="images/Carrot.png">
+    <img class='wastes' id='chicken' src="images/Chicken.png">
+    <img class='composts' id='leafBag' src="images/LeafBag.png">
+    <img class='composts' id='lemon' src="images/Lemon.png">
+    <img class='wastes' id='meat' src="images/Meat.png">
+    <img class='composts' id='newspaper' src="images/Newspaper.png">
+    <img class='composts' id='tomato' src="images/Tomato.png">
   </div>
 
   <div id="binBox">
