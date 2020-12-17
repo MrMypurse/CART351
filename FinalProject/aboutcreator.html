@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>CART 351 FINAL PROJECT ABOUT PAGE 2</title>
+  <title>CART 351 FINAL PROJECT ABOUT CREATOR PAGE </title>
   <link rel="stylesheet" type="text/css" href="css/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
@@ -13,24 +13,48 @@ body{
 }
 header{
   position: relative;
+  left: 5%;
   font-size: 64px;
 }
-#para{
-  position: relative;
+.para{
   font-size: 20px;
+  background-color: #effaea;
+  transition: 0.3s;
+  width: 1200px;
+  height: auto;
 }
+.para:hover{
+  background-color: #D0F0C0;
+
+}
+.column {
+  position:relative;
+  float: left;
+  width: 50%;
+}
+
+img{
+  position: relative;
+  left: 5%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 </style>
 
 <body>
 
   <!--the navigation bar on top with drop down -->
   <div class="navigation">
-    <button class="dropbtn"><a href="index.html">HOME</a></button>
+    <button class="dropbtn"><a href="index.php">HOME</a></button>
     <div class="dropdown" style="float:right">
       <button class="dropbtn">Data Visualization</button>
       <div class="dropdown-content">
-        <a href="study.html">In Canada</a>
-        <a href="local.html">Local Data</a>
+        <a href="study.php">In Canada</a>
       </div>
     </div>
     <div class="dropdown" style="float:right">
@@ -51,10 +75,22 @@ header{
 
 
   <!-- the header div -->
+  <div class="row">
     <div class='para'>
     <header><p>About the creator</p> </header>
+    <div class="column"><img src="images/creator.jpg" width=500px height=500px></div>
+    <div class="column">
+    <p>My name is Janet YiTing Sun and I am a second year student in the Computation Art program at Concordia University. I am also currently a tattoo apprentice at Enigma Tattoo in Montreal.
+    </p>
+    <p>I have always been passionate about concept art and game design. There is no limit to an artist's imagination and I was fascinated by the art of game making.
+    </p>
+    <p>After graduating from Art, Communication and Literature program in Dawson College, I decided to continue my post-secondary education at Concordia University to persue my dream career.
+    </p>
 
   </div>
+
+  </div>
+</div>
 
     <footer>
       <div>

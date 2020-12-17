@@ -41,6 +41,7 @@ body{
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+
 }
 
 .dropdown-content a {
@@ -48,6 +49,7 @@ body{
   padding: 12px 14px;
   text-decoration: none;
   display: block;
+  transition: 0.3s;
 }
 
 .dropdown-content a:hover {
@@ -76,4 +78,5 @@ footer{
   padding: 3px;
   background-color: #2C5F2D;
   color: white;
+  height: auto;
 }

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -46,18 +47,18 @@
     height: 380px;
     width: 550px;
   }
+
 </style>
 
 <body>
 
   <!--the navigation bar on top with drop down -->
   <div class="navigation">
-    <button class="dropbtn"><a href="index.html">HOME</a></button>
+    <button class="dropbtn"><a href="index.php">HOME</a></button>
     <div class="dropdown" style="float:right">
       <button class="dropbtn">Data Visualization</button>
       <div class="dropdown-content">
-        <a href="study.html">In Canada</a>
-        <a href="local.html">Local Data</a>
+        <a href="study.php">In Canada</a>
       </div>
     </div>
     <div class="dropdown" style="float:right">
@@ -84,6 +85,7 @@
     <p> This geographical data showcases "Composting by households in Canada" study done by Statistic Canada in 2011.
     </p>
   </header>
+  <div id="result"></div>
   <div id="studyInfo">
     <img id="infoPic" src="images/BC.PNG">
   </div>
@@ -823,6 +825,8 @@
       $('#infoPic').css('display', 'block');
       $("#infoPic").attr('src', 'images/YT.PNG');
     });
+
+
   });
 </script>
 

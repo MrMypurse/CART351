@@ -9,23 +9,46 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <style>
-instructionBox{
+#instructionBox,#resourceBox{
   height:auto;
   width: auto;
+  background-color: #effaea;
+  transition: 0.3s;
+}
+#instructionBox:hover,#resourceBox:hover{
+    background-color: #D0F0C0;
 }
 
+img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+header{
+  font-weight: bold;
+  position: relative;
+  left: 100px;
+  text-align: left;
+  font-size: 40px;
+  color: #684b3c;
+}
+
+a{
+  position: relative;
+  left: 15%;
+}
 </style>
 
 <body>
 
   <!--the navigation bar on top with drop down -->
   <div class="navigation">
-    <button class="dropbtn"><a href="index.html">HOME</a></button>
+    <button class="dropbtn"><a href="index.php">HOME</a></button>
     <div class="dropdown" style="float:right">
       <button class="dropbtn">Data Visualization</button>
       <div class="dropdown-content">
-        <a href="study.html">In Canada</a>
-        <a href="local.html">Local Data</a>
+        <a href="study.php">In Canada</a>
       </div>
     </div>
     <div class="dropdown" style="float:right">
@@ -47,13 +70,22 @@ instructionBox{
 
   <!-- the header div -->
   <header>
+    <p>To start your own compost pile...</p>
 
   </header>
   <div id="instructionBox">
-        <img src="images/Instruction1.JPG" height="800px" width="1400px">;
-        <img src="images/Instruction2.JPG" height="800px" width="1400px">;
+    <br>
+        <img src="images/Instruction1.gif" height="540px" width="960px">;
+        <img src="images/Instruction2.gif" height="540px" width="960px">;
   </div>
-
+  <header><p>External Resources</p></header>
+  <div id="resourceBox">
+    <a href='https://www150.statcan.gc.ca/n1/pub/16-002-x/2013001/article/11848-eng.htm'<p>"Composting by households in Canada." Statistics Canada. </p></a>
+    <a href='https://www.canada.ca/en/environment-climate-change/services/environmental-indicators/solid-waste-diversion-disposal.html'<p> "Solid Waste Diversion and Disposal." Canada.ca. </p></a>
+    <a href='http://www.compost.org/' <p> The Compost Council of Canada.</p></a>
+    <a href='https://www.canadianliving.com/home-and-garden/article/how-to-start-your-own-compost-pile' <p>"How to Start Your Own Compost Pile." Canadian Living.</p></a>
+    <a href='https://earthmatter.org/wp-content/uploads/2016/08/tip-sheet-how-to-use-compost-cpts-htuc-f.pdf' <p>"How to Use Compost." NYC Compost Project.</p></a>
+  </div>
 <footer>
   <div>
   <p> Created by Janet Sun. Concordia University. Fall 2020. </p>

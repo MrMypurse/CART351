@@ -1,6 +1,20 @@
-<!DOCTYPE html>
-<html>
+<?php
+//check if there has been something posted to the server to be processed
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
+  $location = $_POST['a_location'];
+  $choice = $_POST['a_choice'];
+
+    $myPackagedData = new stdClass();
+    $myPackagedData->LocationInCanada = $location;
+    $myPackagedData->ChoiceOfCompost = $choice;
+    $myJSONObj = json_encode($myPackagedData);
+    echo $myJSONObj;
+    exit;
+}
+?>
+
+<html>
 <head>
   <title>CART 351 FINAL PROJECT HOME PAGE</title>
   <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -12,23 +26,30 @@
 </head>
 
 <style>
+body{
+  width: 100%;
+  height: auto;
+}
 #headerImage {
   display: grid;
   position: relative;
   width: 100%;
-  height: 900px;
+  height: auto;
 }
 
 .column {
   position: relative;
   float: left;
-  left: 5%;
   width: 33.33%;
   height: 500px;
   align-items: center;
+  background-color: #effaea;
 }
 
 #geoLogo, #statLogo, #gameLogo{
+  position: relative;
+  top: 15%;
+  left: 15%;
   box-shadow: 5px 5px 5px #ccc;
   width: 300px;
   height: 300px;
@@ -69,7 +90,17 @@
   background-color: white;
   color: black;
 }
+footer{
+  height: auto;
+}
 
+#result{
+  color: #684b3c;
+  font-size: 20px;
+  position: relative;
+  left: 10%;
+
+}
 </style>
 
 
@@ -78,12 +109,11 @@
 
   <!--the navigation bar on top with drop down -->
   <div class="navigation">
-    <button class="dropbtn"><a href="index.html">HOME</a></button>
+    <button class="dropbtn"><a href="index.php">HOME</a></button>
     <div class="dropdown" style="float:right">
       <button class="dropbtn">Data Visualization</button>
       <div class="dropdown-content">
-        <a href="study.html">In Canada</a>
-        <a href="local.html">Local Data</a>
+        <a href="study.php">In Canada</a>
       </div>
     </div>
     <div class="dropdown" style="float:right">
@@ -108,11 +138,31 @@
     <form id="popupForm" action = "">
     <fieldset>
       <label> Welcome. Please answer the questions below to start: </label>
-      <p>Which province/territory are you currently resident in Canada?</p>
-      <p><input type="text" name="a_location" value="Type here" required></p>
-      <p>Does your household compost organic wastes regularly?</p>
-      <p><input type="text" name="a_choice" value="Type here" required></p>
-      <p><input type="submit" name="enter" value="Enter" id="enterButton"></p>
+      <p>Which province/territory are you currently resident in Canada?
+      <input type="text" maxlength="40" name="a_location" required></p>
+      <!--<p><select name="a_location" id="location">
+        <option value="al">Alberta</option>
+        <option value="bc">British Columbia</option>
+        <option value="mb">Manitoba</option>
+        <option value="nb">New Brunswick</option>
+        <option value="nl">Newfoundland and Labrador</option>
+        <option value="ns">Nova Scotia</option>
+        <option value="nt">Northwest Territories</option>
+        <option value="nu">Nunavut</option>
+        <option value="on">Ontario</option>
+        <option value="pe">Prince Edward Island</option>
+        <option value="qc">Quebec</option>
+        <option value="sk">Saskatchewan</option>
+        <option value="yt">Yukon</option>
+      </select> </p>-->
+      <p>Does your household compost organic wastes regularly?
+      <input type="text" maxlength="200" name="a_choice" required></p>
+      <!--<p><select name="a_choice" id="choice">
+        <option value="yes">Yes, we compost our waste regularly.</option>
+        <option value="maybe">Yes, but only occasionaly.</option>
+        <option value="no">No, we do not compost at all.</option>
+      </select> </p>-->
+      <p><input type="submit" name="enter" value="Enter" id="enterButton" dismiss="#popupForm"></p>
     </fieldset>
     </form>
   </div>
@@ -122,17 +172,18 @@
   <header id="headerImage">
     <img id="soil" src="images/Home_soil.svg">
   </header>
+  <div id="result"></div>
   <div>
   <div class="column">
-    <a href="study.html"><img id="geoLogo" src="images/logo_geospacial.png">
+    <a href="study.php"><img id="geoLogo" src="images/logo_geospacial.png">
     </a>
   </div>
   <div class="column">
-    <a href="local.html"><img id="statLogo" src="images/logo_statistical.png">
+    <a href="howto.html"><img id="statLogo" src="images/logo_statistical.png">
     </a>
   </div>
   <div class="column">
-    <a href="howto.html"><img id="gameLogo" src="images/logo_game.png" >
+    <a href="game.html"><img id="gameLogo" src="images/logo_game.png" >
     </a>
   </div>
 </div>
@@ -155,11 +206,12 @@ $(document).ready(function(){
     console.log("CLICKED");
     let form= $('#popupForm')[0];
     let data = new FormData(form);
+    $(this).closest(".ui-dialog-content").dialog("close");
 
     $.ajax({
       type: "POST",
       enctype: 'multipart/form-data',
-      url: "popup.php",
+      url: "index.php",
       data: data,
       processData: false,
       contentType: false,
@@ -170,6 +222,7 @@ $(document).ready(function(){
         console.log(response);
         let parsedJSON = JSON.parse(response);
         console.log(parsedJSON);
+        displayResponse(parsedJSON);
       },
       error:function(){
         conosole.log("ERROR!");
@@ -177,13 +230,29 @@ $(document).ready(function(){
     });
   });
 
-
 function popUp(){
   console.log("formLoaded");
   $( "#popupForm" ).dialog({
     modal: true
 });
 }
+
+
+function displayResponse(theResult){
+      let container = $('<div>').addClass("outer");
+      let title = $('<h1>');
+      $(title).text("You answered:");
+      $(title).appendTo(container);
+      let contentContainer = $('<div>').addClass("content");
+      for (let property in theResult){
+        console.log(property);
+          let para = $('<p>');
+          $(para).text(property+ ":  " + theResult[property]);
+         $(para).appendTo(contentContainer);
+       }
+      $(contentContainer).appendTo(container);
+      $(container).appendTo("#result");
+    }
 });
 
 </script>

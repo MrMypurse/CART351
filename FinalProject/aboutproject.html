@@ -13,11 +13,33 @@ body{
 }
 header{
   position: relative;
+  left: 5%;
   font-size: 64px;
 }
-#para{
+.para{
   position: relative;
   font-size: 20px;
+  background-color: #effaea;
+  transition: 0.3s;
+  width: 1500px;
+  height: auto;
+}
+header:hover{
+  background-color: #D0F0C0;
+
+}
+.column {
+  position: relative;
+  left: 5%;
+  float: left;
+  width: 50%;
+
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 </style>
 
@@ -25,12 +47,11 @@ header{
 
   <!--the navigation bar on top with drop down -->
   <div class="navigation">
-    <button class="dropbtn"><a href="index.html">HOME</a></button>
+    <button class="dropbtn"><a href="index.php">HOME</a></button>
     <div class="dropdown" style="float:right">
       <button class="dropbtn">Data Visualization</button>
       <div class="dropdown-content">
-        <a href="study.html">In Canada</a>
-        <a href="local.html">Local Data</a>
+        <a href="study.php">In Canada</a>
       </div>
     </div>
     <div class="dropdown" style="float:right">
@@ -51,18 +72,22 @@ header{
 
 
   <!-- the header div -->
+  <div class="row">
     <div class='para'>
     <header><p>About this project</p> </header>
-    <p> This website is about the current compost situation in Canada, including data visualizations that present the percentages of Canadians who compost regularly, separated by regions, incomes, and etc.
+    <div class="column">
+    <p>This website is about the current compost situation in Canada, including data visualizations that present the percentages of Canadians who compost regularly, separated by regions, incomes, and etc.
     </p>
     <p>My mother and I have been using a lot of organic wastes in our garden. I also think that this topic should be important for others, because actions to affect our environment takes more than one person. Composting diverts materials from landfills and adds something beneficial to the environment. But for composting to be actually beneficial to the planet, we have to make a collective effort as a community. Therefore, I think that we should all be aware of how to compost, or if we don’t have time/ tools to compost, at least we should understand the connection between waste, compost and recycles. Lastly, I find it important to make this topic into an explorable networked space, because visualized data is much easier to consume than boring numbers and statistics. Our manner of digesting information is so fast right now, that visuals will leave a much deeper impression than text/numbers.
     </p>
     <p>I want to destabilize the users and make them reflect on themselves, their environment and society by making the users a part of the data in the beginning. I will have a pop up page when the user enters the website to ask whether they compost. Everyone can make their own decisions when it comes to discarding their waste, but I want to encourage users to reflect on how their decisions can affect the environment, even when they are the smallest actions.
     </p>
-    <p> hope that my space can help educating the users about the importance of composting and the impact of our actions on the environment. And I also hope that i can challenge the users to look at how they discard their waste. My space should also enable collaboration between the users in a way that they can see the statistics within their region.
+    <p>I hope that my space can help educating the users about the importance of composting and the impact of our actions on the environment. And I also hope that i can challenge the users to look at how they discard their waste. My space should also enable collaboration between the users in a way that they can see the statistics within their region.
     </p>
   </div>
-
+  <div class="column"><img src="images/garden1.jpg" width=500px height=700px></div>
+  </div>
+</div>
     <footer>
       <div>
       <p>Created by Janet Sun. Concordia University. Fall 2020. </p>
